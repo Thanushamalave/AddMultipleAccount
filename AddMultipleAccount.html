@@ -1,0 +1,47 @@
+<template>
+	<lightning-card>
+		<h3 slot="title">
+			<lightning-icon icon-name="standard:account" alternative-text="Event" size="small"></lightning-icon>
+			Insert Multiple Accounts
+		</h3>
+		<div slot="footer">
+			<lightning-button label="Add" variant="brand" onclick={addRow}>
+			</lightning-button>&nbsp;
+			<lightning-button label="Save" variant="brand" onclick={saveMultipleAccounts}>
+			</lightning-button>
+		</div>
+		<template for:each={accountRecList} for:item="account" for:index="index">
+
+			<div key={keyIndex} class="slds-grid">
+				<div class="section">
+					<p>
+						<lightning-input label="Account Name" name='accName' access-key={index} id={index} type='text'
+							onchange={changeHandler} value={account.Name}>
+						</lightning-input>
+					</p>
+					<p>
+						<lightning-combobox label="Industry" name='accIndustry' access-key={index} id={index}
+							value={account.Industry} onchange={changeHandler} options={picklistValues}>
+						</lightning-combobox>
+					</p>
+				</div>
+				<div class="section">
+					<p class="slds-col slds-size_1-of-2">
+						<lightning-input label="Phone Number" name='accPhone' access-key={index} type='Phone' id={index}
+							onchange={changeHandler} value={account.Phone}></lightning-input>
+					</p>
+				</div>
+				<p>
+					<lightning-icon icon-name="action:delete" access-key={index} id={index}
+						alternative-text="Click to Call" size="small" title="large size" onclick={removeRow}>
+					</lightning-icon>
+				</p>
+			</div>
+
+		</template>
+
+	</lightning-card>
+
+
+
+</template>
